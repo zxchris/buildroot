@@ -29,6 +29,8 @@ BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE="board/redquark/redquarkone/linux_3.4.v2.con
 #BR2_LINUX_KERNEL_DEFCONFIG="sun7i"
 BR2_LINUX_KERNEL_INSTALL_TARGET=y
 
+BR2_ROOTFS_OVERLAY="board/redquark/redquarkone/rootfs-overlay"
+
 # Device management
 BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_MDEV=y
 BR2_ROOTFS_DEVICE_TABLE="system/device_table.txt"
