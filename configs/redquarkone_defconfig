@@ -1,3 +1,5 @@
+BR2_JLEVEL=16
+
 # Architecture
 BR2_arm=y
 BR2_cortex_a7=y
