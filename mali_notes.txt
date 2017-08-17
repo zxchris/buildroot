@@ -1,0 +1,33 @@
+BR2_LINUX_KERNEL_CUSTOM_REPO_URL="git@github.com:zxchris/linux-sunxi.git"
+BR2_LINUX_KERNEL_CUSTOM_REPO_VERSION="mali-r4p0"
+
+- This build fails in several places due to missing files - I think they come from the H3 / sun8i port of
+linux-sunxi, which is where I dragged the r4p0 drivers/gpu/mali stuff from.
+
+
+BR2_LINUX_KERNEL_CUSTOM_REPO_URL="git@github.com:mireq/linux-sunxi.git"
+BR2_LINUX_KERNEL_CUSTOM_REPO_VERSION="sunxi-3.4"
+
+- Initially fails to build because of
+        include/linux/compiler-gcc.h:103:30: fatal error: linux/compiler-gcc5.h: No such file or directory
+
+  arch/arm/kernel/return_address.c:65 - remove func
+    void *return_address(unsigned int level)
+    {
+        return NULL;
+    }
+
+  arch/arm/include/asm/ftrace.h:48 - change extern to static
+
+    static inline void *return_address(unsigned int level)
+
+  Builds, but fails to boot:
+
+  <5>Linux version 3.4.105 (chris@puck) (gcc version 5.4.0 (Buildroot 2016.11.2-00013-gbc07cbe3c-dirty) ) #1 SMP PREEMPT Thu Aug 17 18:32:55 BST 2017
+  CPU: ARMv7 Processor [410fc074] revision 4 (ARMv7), cr=10c5387d
+  CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+
+  Error: unrecognized/unsupported machine ID (r1 = 0x100010bb).
+
+
+
