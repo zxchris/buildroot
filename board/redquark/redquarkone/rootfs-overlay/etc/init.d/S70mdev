@@ -6,7 +6,7 @@ start() {
 }                                   
                                     
 stop() {                            
-        echo "mali: stopping"
+        echo "mdev: stopping"
 		echo "" > /proc/sys/kernel/hotplug
                   
 }            

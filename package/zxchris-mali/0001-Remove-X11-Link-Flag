@@ -1,0 +1,16 @@
+linking of test app needs libUMP
+
+Signed-off-by:
+
+index fa652f9..700416e 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -5,7 +5,7 @@ CFLAGS ?= -Wall
+ all: test
+ 
+ test: ../config.mk test.c
+-       $(CC) $(CFLAGS) -o $@ test.c -lEGL -lGLESv2 -lX11
++       $(CC) $(CFLAGS) -o $@ test.c -lEGL -lGLESv2
+ 
+ clean:
+        rm -f test
