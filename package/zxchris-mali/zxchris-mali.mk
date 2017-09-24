@@ -5,7 +5,7 @@
 ################################################################################
 
 # last sha1 character dropped to ensure unique filename
-ZXCHRIS_MALI_VERSION = 8cd7d4f70541d6090bae6f74d0fb6dd3650a414e
+ZXCHRIS_MALI_VERSION = 33354e4c806e9ed2881e937f71410922cf1f04e
 ZXCHRIS_MALI_SITE = https://github.com/zxchris/sunxi-mali
 ZXCHRIS_MALI_SITE_METHOD = git
 
