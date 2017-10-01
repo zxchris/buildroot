@@ -1,0 +1,26 @@
+config BR2_PACKAGE_REDQUARK_BOARDS
+	bool "redquark script.bin board file"
+	depends on BR2_arm
+	select BR2_PACKAGE_HOST_REDQUARK_TOOLS
+	help
+	  redquark-boards requires a compiled .fex files for hardware
+	  description, used by the kernel during boot for hardware
+	  initialization. This package is specific for linux-sunxi
+	  kernel and it is useless for mainline kernel versions.
+	  It is derived from the linux-sunxi/sunxi-boards package.
+
+	  https://github.com/zxchris/redquark-boards
+
+if BR2_PACKAGE_REDQUARK_BOARDS
+config BR2_PACKAGE_REDQUARK_BOARDS_FEX_FILE
+	string ".fex file to compile"
+	help
+	  This field defines the name of the .fex file for which the
+	  .bin file should be generated.
+
+	  This should be the path of the .fex file relative to the
+	  sys_config/ directory, and including the .fex extension.
+
+	  See inside sys_config/ directory in sunxi-boards source code
+	  to see the list of valid .fex files.
+endif
