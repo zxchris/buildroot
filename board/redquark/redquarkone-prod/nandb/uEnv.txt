@@ -1,0 +1,5 @@
+root=/dev/nandb        
+machid=10bb            
+console=ttyS0,115200 rootwait panic=10 sunxi_ve_mem_reserve=0 sunxi_g2d_mem_reserve=0
+sunxi_fb_mem_reserve=16 consoleblank=0 hdmi.audio=1 disp.screen0_output_mode=1280x720p50
+loglevel=1 logo.nologo
