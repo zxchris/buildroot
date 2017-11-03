@@ -18,6 +18,10 @@ endef
 # Compute LINUX_SOURCE and LINUX_SITE from the configuration
 ifeq ($(BR2_LINUX_KERNEL_CUSTOM_TARBALL),y)
 LINUX_TARBALL = $(call qstrip,$(BR2_LINUX_KERNEL_CUSTOM_TARBALL_LOCATION))
+# If the tarball happens to be a local file SITE_METHOD is set accordingly
+ifneq ($(wildcard $(LINUX_TARBALL)),)
+LINUX_SITE_METHOD = "file"
+endif
 LINUX_SITE = $(patsubst %/,%,$(dir $(LINUX_TARBALL)))
 LINUX_SOURCE = $(notdir $(LINUX_TARBALL))
 BR_NO_CHECK_HASH_FOR += $(LINUX_SOURCE)
