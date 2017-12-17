@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# Start logging
+#
+
+case "$1" in
+  start)
+    echo "Logging disabled (redquark override)"
+	;;
+  stop)
+    echo "OK"
+	;;
+  restart|reload)
+	start
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?

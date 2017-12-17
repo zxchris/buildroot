@@ -11,7 +11,14 @@ mount -oloop ${TMP_ROOTFS_IMG} ${ROOTFS_MNT}
 
 rm -rf ${ROOTFS_MNT}/lib/modules/ ${ROOTFS_MNT}/boot/ ${ROOTFS_MNT}/linuxrc ${ROOTFS_MNT}/lib32
 
+# Create necessary init symling otherwise allwinner u-boot can't find it and boot does not complete....
 BR=${PWD}
+cd ${ROOTFS_MNT}
+ln -s /bin/busybox init
+
+ls -l
+
+# Now tar up the filesystem
 cd ${ROOTFS_MNT}/..
 tar czf ${BR}/${ROOTTARGZ} rootfs
 
