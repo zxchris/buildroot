@@ -1,0 +1,39 @@
+#!/bin/sh -e                                                        
+                  
+start() {                                                
+        echo "usbdrive: starting"
+        [ ! -d /tmp/usbdrive ] && mkdir /tmp/usbdrive
+        [ ! -e /dev/usbdrive/ ] && ln -s /tmp/usbdrive /dev/
+
+        echo "Making input rw"
+        if [ -h /dev/input ] # /dev/input -> /tmp/input
+        then
+            mkdir -p /tmp/input
+        else
+            [ ! -e /dev/input/ ] && mkdir /tmp/input
+            [   -d /dev/input  ] && mv    /dev/input /tmp/
+            ln -s /tmp/input /dev/
+        fi
+}                                   
+                                    
+stop() {                            
+        echo "usbdrive: stopping"
+                  
+}            
+             
+case "$1" in 
+start)       
+        start
+;;          
+stop)       
+        stop                                            
+;;            
+restart)     
+        stop                              
+        start                                                       
+;;                                                                  
+*)                                                                  
+        echo "usbdrive: Please use start, stop, or restart."
+        exit 1                       
+;;                                   
+esac 
