@@ -1,0 +1,29 @@
+#!/bin/sh -e                                                        
+                  
+start() {                                                
+        echo "rofs: starting"
+        # Make filesystem readonly
+        mount -o remount,ro /
+}                                   
+                                    
+stop() {                            
+        echo "rofs: stopping"
+                  
+}            
+             
+case "$1" in 
+start)       
+        start
+;;          
+stop)       
+        stop                                            
+;;            
+restart)     
+        stop                              
+        start                                                       
+;;                                                                  
+*)                                                                  
+        echo "rofs: Please use start, stop, or restart."
+        exit 1                       
+;;                                   
+esac 
